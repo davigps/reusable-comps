@@ -1,15 +1,21 @@
 import React from 'react';
 
 import '../../global.css';
+import logo from '../../assets/logo.png';
 
-import MyHeader from '../../../components/MyHeader';
+import { routes } from '../../config';
+
+import Header from '../../../components/Header';
 
 function Blog() {
   return (
     <div>
-      <MyHeader />
+      <Header
+        logo={logo}
+        links={routes}
+      />
       <div className="background-image" />
-      <div style={{ height: '800px', textAlign: 'center' }}>BLOG</div>
+      <div style={{ height: '800px', textAlign: 'center', fontSize: '100px' }}>BLOG</div>
     </div>
   );
 }

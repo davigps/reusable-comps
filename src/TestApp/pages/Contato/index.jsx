@@ -7,18 +7,17 @@ import { routes } from '../../config';
 
 import Header from '../../../components/Header';
 
-function Home() {
+function Contato() {
   return (
     <div>
       <Header
         logo={logo}
         links={routes}
-        actionButton={{ name: 'Contato', to: '/contato' }}
       />
       <div className="background-image" />
-      <div style={{ height: '800px' }} />
+      <div style={{ height: '800px', textAlign: 'center', fontSize: '100px' }}>Contato</div>
     </div>
   );
 }
 
-export default Home;
+export default Contato;
