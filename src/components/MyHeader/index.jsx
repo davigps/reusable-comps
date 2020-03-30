@@ -5,13 +5,13 @@ import {
 } from './styles';
 
 function MyHeader({
-  logo,
+  logo, title,
 }) {
   return (
     <Container>
       <LogoSpace>
         <Logo src={logo} />
-        <Title>Teste</Title>
+        <Title>{title}</Title>
       </LogoSpace>
     </Container>
   );

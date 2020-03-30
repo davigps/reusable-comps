@@ -1,6 +1,6 @@
 # Reusable Components with ReactJS
 
-I made these components to reuse them in future projects...
+I am making these components to reuse them in future projects...
 
 ## How do you start the development?
 
