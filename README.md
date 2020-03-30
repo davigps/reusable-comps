@@ -20,3 +20,19 @@ or
 ```
 yarn
 ```
+
+## Components Properties
+
+### Header
+- logo: React Image (Optional)
+- title: String (Optional)
+- links: Array of objects
+Shape of them:
+{
+  name: "Name in Menu", to: "link to redirect"
+}
+- actionButton: Object (Optional)
+Shape:
+{
+  name: "Action Label", to: "link to redirect"
+}
