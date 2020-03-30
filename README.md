@@ -1,6 +1,6 @@
 # Reusable Components with ReactJS
 
-I am making these components to reuse them in future projects...
+I am making these components to reuse them in future projects... <br>
 
 ## How do you start the development?
 
@@ -20,19 +20,24 @@ or
 ```
 yarn
 ```
+<br>
 
 ## Components Properties
 
 ### Header
 - logo: React Image (Optional)
 - title: String (Optional)
-- links: Array of objects
+- links: Array of objects <br>
 Shape of them:
+```
 {
   name: "Name in Menu", to: "link to redirect"
 }
-- actionButton: Object (Optional)
+```
+- actionButton: Object (Optional) <br>
 Shape:
-{
+```
+{ 
   name: "Action Label", to: "link to redirect"
 }
+```
