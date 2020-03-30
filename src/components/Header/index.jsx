@@ -35,13 +35,18 @@ Header.propTypes = {
   logo: PropTypes.string,
   title: PropTypes.string,
   links: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string, to: PropTypes.string,
+    name: PropTypes.string.isRequired, to: PropTypes.string.isRequired,
   })).isRequired,
+  actionButton: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+  }),
 };
 
 Header.defaultProps = {
   logo: '',
   title: '',
+  actionButton: undefined,
 };
 
 export default Header;

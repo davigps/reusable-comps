@@ -41,7 +41,7 @@ export const MenuItem = styled(Link)`
 
   margin-right: 3vw;
   &:hover {
-    opacity: 70%;
+    color: #ccc;
   }
 `;
 
