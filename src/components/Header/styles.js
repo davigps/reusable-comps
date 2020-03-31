@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.header`
@@ -14,7 +15,7 @@ export const Container = styled.header`
   background-color: rgba(0, 0, 0, 0.7);
 `;
 
-export const LogoSpace = styled.div`
+export const LogoSpace = styled(Link)`
   display: flex;
   align-items: center;
   margin-right: auto;
