@@ -1,32 +1,50 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import Menu from './subcomponents/Menu';
+
 import {
-  Container, Title, LogoSpace, Menu, MenuItem, ActionButton,
+  Container, Title, LogoSpace,
 } from './styles';
 
 function Header({
   logo, title, links, actionButton,
 }) {
+  const [menuSize, setMenuSize] = useState(null);
+  const [useSmall, setUseSmall] = useState(false);
+
+  const containerElem = useRef(null);
+  const menuElem = useRef(null);
+  const logoSpace = useRef(null);
+
+  const createMenu = () => {
+    const containerWidth = containerElem.current ? containerElem.current.offsetWidth : 0;
+    if (menuElem.current) setMenuSize(menuElem.current.offsetWidth);
+    const logoWidth = logoSpace.current ? logoSpace.current.offsetWidth : 0;
+
+    if (menuSize + logoWidth > containerWidth - 23) {
+      if (!useSmall) setUseSmall(true);
+    } else if (useSmall) {
+      setUseSmall(false);
+    }
+  };
+
+  useEffect(createMenu, [menuSize]);
+  window.onresize = createMenu;
+
   return (
-    <Container>
-      <LogoSpace>
+    <Container ref={containerElem}>
+      <LogoSpace ref={logoSpace}>
         { logo ? <img src={logo} alt="Logo" /> : ''}
         <Title>{title}</Title>
       </LogoSpace>
 
-      <Menu>
-        {
-          links.map((link) => (
-            <MenuItem key={link.name} to={link.to}>{link.name}</MenuItem>
-          ))
-        }
-        {
-          actionButton
-            ? (<ActionButton to={actionButton.to}>{actionButton.name}</ActionButton>)
-            : ''
-        }
-      </Menu>
+      <Menu
+        useSmall={useSmall}
+        forwardRef={menuElem}
+        links={links}
+        actionButton={actionButton}
+      />
     </Container>
   );
 }
