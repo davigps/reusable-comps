@@ -52,3 +52,5 @@ export const MenuBar = styled.div`
   margin: 6px 0;
   transition: 0.4s;
 `;
+
+export const MenuSlide = styled.aside``;
