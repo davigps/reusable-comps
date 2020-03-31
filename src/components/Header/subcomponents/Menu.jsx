@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  MenuNormal, MenuNormalItem, ActionButton, SmallMenu, MenuBar,
+  MenuNormal, MenuNormalItem, ActionButton,
+  SmallMenu, MenuBar,
 } from './styles';
+
+import SmallMenuRoutes from './SmallMenuRoutes';
 
 function Menu({
   links, actionButton, forwardRef, useSmall,
@@ -23,28 +26,30 @@ function Menu({
       {
         useSmall
           ? (
-            <SmallMenu onClick={handleMenu}>
-              <MenuBar style={clicked ? bar1 : {}} />
-              <MenuBar style={clicked ? bar2 : {}} />
-              <MenuBar style={clicked ? bar3 : {}} />
-            </SmallMenu>
+            <>
+              <SmallMenu onClick={handleMenu}>
+                <MenuBar style={clicked ? bar1 : {}} />
+                <MenuBar style={clicked ? bar2 : {}} />
+                <MenuBar style={clicked ? bar3 : {}} />
+              </SmallMenu>
+              <SmallMenuRoutes links={links} actionButton={actionButton} clicked={clicked} />
+            </>
           )
           : (
             <MenuNormal ref={forwardRef}>
               {
-            links.map((link) => (
-              <MenuNormalItem key={link.name} to={link.to}>{link.name}</MenuNormalItem>
-            ))
-          }
+                links.map((link) => (
+                  <MenuNormalItem key={link.name} to={link.to}>{link.name}</MenuNormalItem>
+                ))
+              }
               {
-            actionButton
-              ? (<ActionButton to={actionButton.to}>{actionButton.name}</ActionButton>)
-              : ''
-          }
+                actionButton
+                  ? (<ActionButton to={actionButton.to}>{actionButton.name}</ActionButton>)
+                  : ''
+              }
             </MenuNormal>
           )
       }
-
     </>
   );
 }

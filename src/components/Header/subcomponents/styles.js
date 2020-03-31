@@ -53,4 +53,31 @@ export const MenuBar = styled.div`
   transition: 0.4s;
 `;
 
-export const MenuSlide = styled.aside``;
+export const MenuSlide = styled.aside`
+  position: fixed;
+  top: 90px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0,0,0,0.7);
+  border-top: solid 1vh black;
+`;
+
+export const MenuSlideItem = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+
+  width: 100%;
+  border-bottom: solid 0.5vh black;
+
+  padding: 2.3vh 0;
+  &:hover {
+    color: #ccc;
+  }
+`;
