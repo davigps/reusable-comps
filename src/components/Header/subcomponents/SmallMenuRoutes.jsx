@@ -5,24 +5,37 @@ import {
   MenuSlide, MenuSlideItem,
 } from './styles';
 
-const SmallMenuRoutes = ({ clicked, links, actionButton }) => (
+const SmallMenuRoutes = ({
+  clicked, links, actionButton, onClick,
+}) => (
   <>
     {
-      clicked
-        ? (
-          <MenuSlide>
-            {
-              links.map((link) => (
-                <MenuSlideItem key={link.name} to={link.to}>{link.name}</MenuSlideItem>
-              ))
-            }
-            { actionButton && (
-              <MenuSlideItem to={actionButton.to}>{actionButton.name}</MenuSlideItem>
-            ) }
-          </MenuSlide>
-        )
-        : ''
-    }
+        clicked
+          ? (
+            <MenuSlide>
+              {
+                links.map((link) => (
+                  <MenuSlideItem
+                    key={link.name}
+                    to={link.to}
+                    onClick={() => onClick(link.to)}
+                  >
+                    {link.name}
+                  </MenuSlideItem>
+                ))
+              }
+              { actionButton && (
+                <MenuSlideItem
+                  to={actionButton.to}
+                  onClick={() => onClick(actionButton.to)}
+                >
+                  {actionButton.name}
+                </MenuSlideItem>
+              ) }
+            </MenuSlide>
+          )
+          : ''
+      }
   </>
 );
 
@@ -35,6 +48,7 @@ SmallMenuRoutes.propTypes = {
     to: PropTypes.string.isRequired,
   }),
   clicked: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 SmallMenuRoutes.defaultProps = {

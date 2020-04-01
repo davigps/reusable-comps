@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {
@@ -13,8 +14,15 @@ function Menu({
 }) {
   const [clicked, setClicked] = useState(false);
 
+  const history = useHistory();
+  history.listen(() => setClicked(!clicked));
+
   const handleMenu = () => {
     setClicked(!clicked);
+  };
+
+  const handleRouteClick = (route) => {
+    if (!route.includes('#')) window.scroll(0, 0);
   };
 
   const bar1 = { transform: 'rotate(-45deg) translate(-9px, 6px)' };
@@ -32,19 +40,37 @@ function Menu({
                 <MenuBar style={clicked ? bar2 : {}} />
                 <MenuBar style={clicked ? bar3 : {}} />
               </SmallMenu>
-              <SmallMenuRoutes links={links} actionButton={actionButton} clicked={clicked} />
+              <SmallMenuRoutes
+                links={links}
+                actionButton={actionButton}
+                clicked={clicked}
+                onClick={handleRouteClick}
+              />
             </>
           )
           : (
             <MenuNormal ref={forwardRef}>
               {
                 links.map((link) => (
-                  <MenuNormalItem key={link.name} to={link.to}>{link.name}</MenuNormalItem>
+                  <MenuNormalItem
+                    key={link.name}
+                    to={link.to}
+                    onClick={() => handleRouteClick(link.to)}
+                  >
+                    {link.name}
+                  </MenuNormalItem>
                 ))
               }
               {
                 actionButton
-                  ? (<ActionButton to={actionButton.to}>{actionButton.name}</ActionButton>)
+                  ? (
+                    <ActionButton
+                      to={actionButton.to}
+                      onClick={() => handleRouteClick(actionButton.to)}
+                    >
+                      {actionButton.name}
+                    </ActionButton>
+                  )
                   : ''
               }
             </MenuNormal>

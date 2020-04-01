@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const MenuNormal = styled.menu`
   display: flex;
@@ -13,6 +13,10 @@ export const MenuNormalItem = styled(Link)`
   text-decoration: none;
   color: white;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   margin-right: 3vw;
   &:hover {
     color: #ccc;
